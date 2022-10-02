@@ -156,7 +156,7 @@ class Auth extends ShieldAuth
      * could be modified as the only method of login once an account
      * has been set up.
      */
-    public bool $allowMagicLinkLogins = true;
+    public bool $allowMagicLinkLogins = false;
 
     /**
      * --------------------------------------------------------------------
@@ -348,7 +348,9 @@ class Auth extends ShieldAuth
      */
     public function loginRedirect(): string
     {
-        $url = setting('Auth.redirects')['login'];
+        $url = auth()->user()->inGroup('admin')
+            ? '/admin'
+            : setting('Auth.redirects')['login'];
 
         return $this->getUrl($url);
     }
