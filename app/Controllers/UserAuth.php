@@ -2,7 +2,7 @@
 
 namespace App\Controllers;
 
-class Login extends BaseController
+class UserAuth extends BaseController
 {
     public function index()
     {
@@ -11,7 +11,14 @@ class Login extends BaseController
             . view('templates/footer');
     }
 
+    public function logout()
+    {
+        return; // TODO
+    }
     
-    
+    public function login()
+    {
+        return; // TODO
+    }
 
 }
