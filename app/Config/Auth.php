@@ -135,7 +135,7 @@ class Auth extends ShieldAuth
      * --------------------------------------------------------------------
      * Determines whether users can register for the site.
      */
-    public bool $allowRegistration = true;
+    public bool $allowRegistration = false;
 
     /**
      * --------------------------------------------------------------------
@@ -210,7 +210,7 @@ class Auth extends ShieldAuth
      */
     public array $passwordValidators = [
         'CodeIgniter\Shield\Authentication\Passwords\CompositionValidator',
-        'CodeIgniter\Shield\Authentication\Passwords\NothingPersonalValidator',
+        // 'CodeIgniter\Shield\Authentication\Passwords\NothingPersonalValidator',
         'CodeIgniter\Shield\Authentication\Passwords\DictionaryValidator',
         // 'CodeIgniter\Shield\Authentication\Passwords\PwnedValidator',
     ];
@@ -222,7 +222,7 @@ class Auth extends ShieldAuth
      * Fields that are available to be used as credentials for login.
      */
     public array $validFields = [
-        'email',
+        // 'email',
         'username',
     ];
 
