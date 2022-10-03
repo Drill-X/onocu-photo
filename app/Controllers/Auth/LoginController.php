@@ -7,7 +7,7 @@ use CodeIgniter\Shield\Controllers\LoginController as ShieldLogin;
 class LoginController extends ShieldLogin
 {
    /**
-     * Returns the rules that should be used for validation, but uses username instead of email.
+     * Returns the rules that should be used for validation, but uses username instead of the default email.
      *
      * @return string[]
      */

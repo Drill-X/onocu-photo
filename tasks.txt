@@ -11,29 +11,13 @@ TODO:
  - Views
  - Portfolio database model (read)
 
---- User Login ---
-Path: <base>/login/
-Description: Logs the user in; admins are redirected to the admin panel, normal users go to management
-TODO:
- - Controller
- - Views
- - Learn what else I need to do for auth stuff
-
---- User Logout ---
-Path: <base>/logout/
-TODO:
- - Probablly connect to the login controller? 
- - Set logout redirect
-
 --- Admin Panel ---
 Path: <base>/admin/
 Description: A basic user management panel
  - Add, list, remove normal users
- - Set admin account with seeding? 
 
 --- Portfolio Management Panel ---
 Path: <base>/manage/<user>
-
 
 
 Current workflow idea:
@@ -41,3 +25,6 @@ Current workflow idea:
 2. User manages their portfolio (upload pictures, set background color, set display layout, etc.)
 3. User saves changes, backend updates database and saves images (maybe do some resizing for optimal page load times?)
 4. User shares link to portfolio so the public can access their work
+
+--- Done: ---
+Login/logout/auth stuff (the main work here was configuring it to use username instead of email for login; shield does all the hard work)
