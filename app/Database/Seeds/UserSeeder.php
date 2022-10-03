@@ -9,10 +9,12 @@ class UserSeeder extends Seeder
 {
     public function run()
     {
+
+        // Create admin user
         $users = model('UserModel');
         $user = new User([
             'username' => 'admin',
-            'email'    => 'admin',
+            'email'    => '',
             'password' => getenv('DEFAULT_ADMIN_PASSWORD'),
         ]);
         $users->save($user);
@@ -21,5 +23,16 @@ class UserSeeder extends Seeder
         $user->addGroup('superadmin');
 
         
+        // Create test (normal) user
+        $users = model('UserModel');
+        $user = new User([
+            'username' => 'test_user',
+            'email'    => '',
+            'password' => getenv('DEFAULT_ADMIN_PASSWORD'),
+        ]);
+        $users->save($user);
+
+        $user = $users->findById($users->getInsertID());
+        $users->addToDefaultGroup($user);
     }
 }
