@@ -17,7 +17,7 @@ class UserSeeder extends Seeder
         if(empty($admin_user)){
             $admin_user = new User([
                 'username' => 'admin',
-                'email'    => '',
+                'email'    => 'admin',
                 'password' => getenv('DEFAULT_ADMIN_PASSWORD'),
             ]);
             $users->save($admin_user);
@@ -27,7 +27,7 @@ class UserSeeder extends Seeder
         } else {
             $admin_user->fill([
                 'username' => 'admin',
-                'email' => '',
+                'email' => 'admin',
                 'password' => getenv('DEFAULT_ADMIN_PASSWORD'),
             ]);
             $users->save($admin_user);
@@ -38,7 +38,7 @@ class UserSeeder extends Seeder
         if(empty($test_user)){
             $test_user = new User([
                 'username' => 'testuser',
-                'email'    => '',
+                'email'    => 'testuser',
                 'password' => getenv('DEFAULT_ADMIN_PASSWORD'),
             ]);
             $users->save($test_user);
@@ -48,7 +48,7 @@ class UserSeeder extends Seeder
         } else {
             $test_user->fill([
                 'username' => 'testuser',
-                'email' => '',
+                'email' => 'testuser',
                 'password' => getenv('DEFAULT_ADMIN_PASSWORD'),
             ]);
             $users->save($test_user);
