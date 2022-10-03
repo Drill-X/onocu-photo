@@ -11,21 +11,20 @@ class UserSeeder extends Seeder
     {
 
         $users = model('UserModel');
-        $identities = $users->findByCredentials(['username' => 'admin']);
-        var_dump($identities);
+        $admin_user = $users->findByCredentials(['username' => 'admin']);
 
         // Create admin user
-        
-        $user = new User([
-            'username' => 'admin',
-            'email'    => '',
-            'password' => getenv('DEFAULT_ADMIN_PASSWORD'),
-        ]);
-        $users->save($user);
+        if(!empty($admin_user)){
+            $user = new User([
+                'username' => 'admin',
+                'email'    => '',
+                'password' => getenv('DEFAULT_ADMIN_PASSWORD'),
+            ]);
+            $users->save($user);
 
-        $user = $users->findById($users->getInsertID());
-        $user->addGroup('superadmin');
-
+            $user = $users->findById($users->getInsertID());
+            $user->addGroup('superadmin');
+        }
         
         // Create test (normal) user
         $user = new User([
