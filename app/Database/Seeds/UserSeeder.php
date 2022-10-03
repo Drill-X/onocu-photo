@@ -11,30 +11,47 @@ class UserSeeder extends Seeder
     {
 
         $users = model('UserModel');
-        $admin_user = $users->findByCredentials(['username' => 'admin']);
 
+        $admin_user = $users->findByCredentials(['username' => 'admin']);
         // Create admin user
         if(empty($admin_user)){
-            $user = new User([
+            $admin_user = new User([
                 'username' => 'admin',
                 'email'    => '',
                 'password' => getenv('DEFAULT_ADMIN_PASSWORD'),
             ]);
-            $users->save($user);
+            $users->save($admin_user);
 
-            $user = $users->findById($users->getInsertID());
-            $user->addGroup('superadmin');
+            $admin_user = $users->findById($users->getInsertID());
+            $admin_user->addGroup('superadmin');
+        } else {
+            $admin_user->fill([
+                'username' => 'admin',
+                'email' => '',
+                'password' => getenv('DEFAULT_ADMIN_PASSWORD'),
+            ]);
+            $users->save($admin_user);
         }
         
+        $test_user = $users->findByCredentials(['username' => 'testuser']);
         // Create test (normal) user
-        $user = new User([
-            'username' => 'test_user',
-            'email'    => '',
-            'password' => getenv('DEFAULT_ADMIN_PASSWORD'),
-        ]);
-        $users->save($user);
+        if(empty($test_user)){
+            $testuser = new User([
+                'username' => 'testuser',
+                'email'    => '',
+                'password' => getenv('DEFAULT_ADMIN_PASSWORD'),
+            ]);
+            $users->save($test_user);
 
-        $user = $users->findById($users->getInsertID());
-        $users->addToDefaultGroup($user);
+            $test_user = $users->findById($users->getInsertID());
+            $test_user->addGroup('user');
+        } else {
+            $test_user->fill([
+                'username' => 'testuser',
+                'email' => '',
+                'password' => getenv('DEFAULT_ADMIN_PASSWORD'),
+            ]);
+            $users->save($test_user);
+        }
     }
 }
