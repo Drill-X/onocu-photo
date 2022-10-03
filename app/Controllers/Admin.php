@@ -9,9 +9,9 @@ class Admin extends BaseController
         // IMPORTANT TODO: Authenticate user
         // Get a list of all users
         $users = model('UserModel');
-        $user_list = $users->findAll();
+        $data = ['user_list' => $users->findAll()];
 
-        return view('admin_panel', $user_list);
+        return view('admin_panel', $data);
     }
 
     public function addUser() 
