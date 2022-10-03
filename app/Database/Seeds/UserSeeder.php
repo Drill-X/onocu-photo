@@ -12,12 +12,14 @@ class UserSeeder extends Seeder
         $users = model('UserModel');
         $user = new User([
             'username' => 'admin',
-            'email'    => null,
+            'email'    => 'admin',
             'password' => getenv('DEFAULT_ADMIN_PASSWORD'),
         ]);
-        
+        $users->save($user);
+
+        $user = $users->findById($users->getInsertID());
         $user->addGroup('superadmin');
 
-        $users->save($user);
+        
     }
 }
