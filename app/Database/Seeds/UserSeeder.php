@@ -14,7 +14,7 @@ class UserSeeder extends Seeder
         $admin_user = $users->findByCredentials(['username' => 'admin']);
 
         // Create admin user
-        if(!empty($admin_user)){
+        if(empty($admin_user)){
             $user = new User([
                 'username' => 'admin',
                 'email'    => '',
