@@ -11,7 +11,7 @@ class UserSeeder extends Seeder
     {
 
         $users = model('UserModel');
-        $identities = $users->fetchIdentities();
+        $identities = $users->findByCredentials(['username' => 'admin']);
         env_dump($identities);
 
         // Create admin user
