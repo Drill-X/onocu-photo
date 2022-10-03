@@ -14,7 +14,7 @@ class UserSeeder extends Seeder
 
         $admin_user = $users->findByCredentials(['username' => 'admin']);
         // Create admin user
-        if(empty($admin_user)){
+        if(is_null($admin_user)){
             $admin_user = new User([
                 'username' => 'admin',
                 'email'    => '',
@@ -35,7 +35,7 @@ class UserSeeder extends Seeder
         
         $test_user = $users->findByCredentials(['username' => 'testuser']);
         // Create test (normal) user
-        if(empty($test_user)){
+        if(is_null($test_user)){
             $testuser = new User([
                 'username' => 'testuser',
                 'email'    => '',
