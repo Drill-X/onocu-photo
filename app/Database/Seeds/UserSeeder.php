@@ -10,8 +10,12 @@ class UserSeeder extends Seeder
     public function run()
     {
 
-        // Create admin user
         $users = model('UserModel');
+        $identities = $users->fetchIdentities();
+        env_dump($identities);
+
+        // Create admin user
+        
         $user = new User([
             'username' => 'admin',
             'email'    => '',
@@ -24,7 +28,6 @@ class UserSeeder extends Seeder
 
         
         // Create test (normal) user
-        $users = model('UserModel');
         $user = new User([
             'username' => 'test_user',
             'email'    => '',
