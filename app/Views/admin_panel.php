@@ -1,6 +1,6 @@
 <?php /* View for the admin index display panel */ ?>
 
-<?= $this->extend('templates\skeleton') ?>
+<?= $this->extend('App\Views\templates\skeleton') ?>
 
 <?= $this->section('title') ?><?= $title ?> <?= $this->endSection() ?>
 
