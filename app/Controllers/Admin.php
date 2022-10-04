@@ -6,8 +6,6 @@ class Admin extends BaseController
 {
     public function index()
     {
-        // IMPORTANT TODO: Authenticate user
-        // Get a list of all users
         $users = model('UserModel');
         $data = ['user_list' => $users->findAll()];
 
@@ -16,7 +14,7 @@ class Admin extends BaseController
 
     public function addUser() 
     {
-        return;
+        // This function should create a user with a username and add it to the database
     }
 
     public function delUser()
@@ -24,10 +22,17 @@ class Admin extends BaseController
         $users = model('UserModel');
 
         if ($this->request->getMethod() === 'post' && $this->validate(['id' => 'required|integer'])) {
-            // TODO: Finish later
+            $id = $this->request->getPost('id');
+            $users->delete($user->id, true);
+            return redirect()->route('admin')->withInput()->with('message', 'User successfully deleted!')->withCookies();
         }
 
-        return;
+        return redirect()->route('admin')->withInput()->with('error', 'Something went wrong!')->withCookies();
+    }
+
+    public function createMagicLink($userId) 
+    {
+
     }
 
     public function modUser()
