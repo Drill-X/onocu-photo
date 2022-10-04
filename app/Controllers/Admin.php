@@ -9,7 +9,10 @@ class Admin extends BaseController
     public function index()
     {
         $users = model('UserModel');
-        $data = ['user_list' => $users->findAll()];
+        $data = [
+            'title' => 'Onocu | Admin Panel',
+            'user_list' => $users->findAll()
+        ];
 
         return view('admin_panel', $data);
     }
