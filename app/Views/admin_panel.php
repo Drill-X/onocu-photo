@@ -34,9 +34,10 @@
         <div class="alert alert-success" role="alert"><?= session('message') ?></div>
         <?php endif ?>
 
-        <h3>User list:</h3>
 
-        <ul class="user-list">
+        <section class="user-list">
+        <h3>User list:</h3>
+        <ul>
             <?php foreach ($user_list as $user): ?>
                 <li>
                     <p>Id: <?= esc($user->id) ?></p>
@@ -50,7 +51,21 @@
                 </li>
             <?php endforeach ?>
         </ul>
+        </section>
 
-        <!-- TODO: Create user -->
+
+        <section class="add-user">
+            <form action="/admin/adduser" method="post">
+                <?= csrf_field() ?>
+                <label for="username">Username</label>
+                <input type="input" name="username">
+
+                <label for="password">Password</label>
+                <input type="input" name="password">
+
+                <input type="submit" name="submit" value="Create user">
+            </form>
+        </section>
+
     </body>
 </html>
