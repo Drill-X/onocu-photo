@@ -21,7 +21,7 @@ class Admin extends BaseController
     {
         $users = model('UserModel');
 
-        if ($this->request->getMethod() === 'post' && $this->validate(['id' => 'required|integer'])) {
+        if ($this->request->getMethod() === 'post' && $this->validate(['id' => 'required|is_natural'])) {
             $id = $this->request->getPost('userId');
             $users->delete($id, true);
             return redirect()->route('admin')->withInput()->with('message', 'User successfully deleted!')->withCookies();
