@@ -37,6 +37,8 @@ $routes->set404Override();
 // route since we don't have to scan directories.
 $routes->get('/', 'Home::index');
 $routes->get('/admin', 'Admin::index', ['filter' => 'isloggedin']);
+$routes->post('/admin/deluser', 'Admin::delUser', ['filter' => 'isloggedin']);
+$routes->post('/admin/adduser', 'Admin::addUser', ['filter' => 'isloggedin']);
 
 // Auth routing: 
 service('auth')->routes($routes, ['except' => ['login']]);
