@@ -2,6 +2,8 @@
 
 namespace App\Controllers;
 
+use CodeIgniter\Shield\Entities\User;
+
 class Admin extends BaseController
 {
     public function index()
