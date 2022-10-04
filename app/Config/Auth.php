@@ -349,7 +349,7 @@ class Auth extends ShieldAuth
      */
     public function loginRedirect(): string
     {
-        $url = auth()->user()->hasPermission('admin.access')
+        $url = auth()->user()->inGroup('superadmin', 'admin')
             ? '/admin'
             : setting('Auth.redirects')['login'];
 
