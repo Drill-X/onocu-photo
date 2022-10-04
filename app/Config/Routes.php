@@ -36,7 +36,7 @@ $routes->set404Override();
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
 $routes->get('/', 'Home::index');
-$routes->get('/admin', 'Admin::index', ['filter' => '\App\Filters\LoggedInFilder']);
+$routes->get('/admin', 'Admin::index', ['filter' => 'isloggedin']);
 
 // Auth routing: 
 service('auth')->routes($routes, ['except' => ['login']]);
