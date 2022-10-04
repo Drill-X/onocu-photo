@@ -21,6 +21,12 @@ class Admin extends BaseController
 
     public function delUser()
     {
+        $users = model('UserModel');
+
+        if ($this->request->getMethod() === 'post' && $this->validate(['id' => 'required|integer'])) {
+            // TODO: Finish later
+        }
+
         return;
     }
 

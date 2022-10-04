@@ -21,6 +21,11 @@
                     <p>Id: <?= esc($user->id) ?></p>
                     <p>Email: <?= esc($user->email) ?></p>
                     <p>Username: <?= esc($user->username) ?></p>
+                    <form action="/admin/deluser" method="post">
+                        <?= csrf_field() ?>
+                        <input type="hidden" name="userId" value="<?= esc($user->id) ?>">
+                        <input type="submit" name="submit" value="Delete user">
+                    </form>
                 </li>
             <?php endforeach ?>
         </ul>
