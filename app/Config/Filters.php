@@ -60,7 +60,7 @@ class Filters extends BaseConfig
      * @var array
      */
     public $methods = [
-        'post' => ['csrf', 'isloggedin'],
+        'post' => ['csrf'],
     ];
 
     /**
@@ -73,6 +73,6 @@ class Filters extends BaseConfig
      * @var array
      */
     public $filters = [
-        'isloggedin' => ['before' => ['admin/*']]
+        'isloggedin' => ['before' => ['admin/*']],
     ];
 }
