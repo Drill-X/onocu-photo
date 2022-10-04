@@ -21,13 +21,13 @@ class Admin extends BaseController
     {
         $users = model('UserModel');
 
-        if ($this->request->getMethod() === 'post' && $this->validate(['id' => 'required|is_natural'])) {
+        if ($this->validate(['ueserId' => 'required|is_natural'])) {
             $id = $this->request->getPost('userId');
             $users->delete($id, true);
             return redirect()->route('admin')->withInput()->with('message', 'User successfully deleted!')->withCookies();
         }
 
-        return redirect()->route('admin')->withInput()->with('error', 'Something went wrong!')->withCookies();
+        return redirect()->route('admin')->withInput()->with('error', $validation->getErrors())->withCookies();
     }
 
     public function createMagicLink($userId) 
