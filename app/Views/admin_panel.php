@@ -1,8 +1,8 @@
 <?php /* View for the admin index display panel */ ?>
 
-<?= $this->extend(config('Auth')->views['layout']) ?>
+<?= $this->extend('templates\skeleton') ?>
 
-<?= $this->section('title') ?><?= lang('Auth.login') ?> <?= $this->endSection() ?>
+<?= $this->section('title') ?><?= $title ?> <?= $this->endSection() ?>
 
 <?= $this->section('main') ?>
     <?php /* Alerts 'n stuff (copied from login.php) */ ?>
