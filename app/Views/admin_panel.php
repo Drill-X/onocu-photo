@@ -63,6 +63,9 @@
                 <label for="password">Password</label>
                 <input type="input" name="password">
 
+                <label for="password_confirm">Confirm password</label>
+                <input type="input" name="password_confirm">
+
                 <input type="submit" name="submit" value="Create user">
             </form>
         </section>

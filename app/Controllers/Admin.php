@@ -100,10 +100,6 @@ class Admin extends BaseController
                 'label' => 'Auth.username',
                 'rules' => $registrationUsernameRules,
             ],
-            'email' => [
-                'label' => 'Auth.email',
-                'rules' => $registrationEmailRules,
-            ],
             'password' => [
                 'label' => 'Auth.password',
                 'rules' => 'required|strong_password',
