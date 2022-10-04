@@ -27,7 +27,7 @@ class Admin extends BaseController
             return redirect()->route('admin')->withInput()->with('message', 'User successfully deleted!')->withCookies();
         }
 
-        return redirect()->route('admin')->withInput()->with('error', $this->validator->getErrors())->withCookies();
+        return redirect()->route('admin')->withInput()->with('error', $this->validator->getErrors()[0])->withCookies();
     }
 
     public function createMagicLink($userId) 
