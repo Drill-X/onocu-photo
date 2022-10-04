@@ -23,7 +23,7 @@ class Admin extends BaseController
 
         if ($this->request->getMethod() === 'post' && $this->validate(['id' => 'required|integer'])) {
             $id = $this->request->getPost('id');
-            $users->delete($user->id, true);
+            $users->delete($id, true);
             return redirect()->route('admin')->withInput()->with('message', 'User successfully deleted!')->withCookies();
         }
 
