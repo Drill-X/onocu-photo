@@ -21,7 +21,7 @@ class Admin extends BaseController
 
         $rules = [
             'username' => config('AuthSession')->usernameValidationRules,
-            'password' => config('AuthSession')->passwordValidationRules,
+            'password' => config('Auth')->passwordValidators,
         ];
 
         if ($this->validate($rules)) 
