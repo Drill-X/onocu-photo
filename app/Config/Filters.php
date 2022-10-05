@@ -9,6 +9,7 @@ use CodeIgniter\Filters\Honeypot;
 use CodeIgniter\Filters\InvalidChars;
 use CodeIgniter\Filters\SecureHeaders;
 use App\Filters\LoggedInFilter;
+use App\Filters\IsAdminFilter;
 
 class Filters extends BaseConfig
 {
@@ -25,6 +26,7 @@ class Filters extends BaseConfig
         'invalidchars'  => InvalidChars::class,
         'secureheaders' => SecureHeaders::class,
         'isloggedin'    => LoggedInFilter::class,
+        'isadmin'       => IsAdminFilter::class,
     ];
 
     /**
@@ -73,6 +75,7 @@ class Filters extends BaseConfig
      * @var array
      */
     public $filters = [
-        'isloggedin' => ['before' => ['admin/*']],
+        'isloggedin' => ['before' => ['admin/*', 'manage/*']],
+        'isadmin' => ['before' => ['admin/*']],
     ];
 }

@@ -27,21 +27,33 @@
 
 
     <section class="user-list">
-    <h3>User list:</h3>
-    <ul>
-        <?php foreach ($user_list as $user): ?>
-            <li>
-                <p>Id: <?= esc($user->id) ?></p>
-                <p>Email: <?= esc($user->email) ?></p>
-                <p>Username: <?= esc($user->username) ?></p>
-                <form action="/admin/deluser" method="post">
-                    <?= csrf_field() ?>
-                    <input type="hidden" name="userId" value="<?= esc($user->id) ?>">
-                    <input type="submit" name="submit" value="Delete user">
-                </form>
-            </li>
-        <?php endforeach ?>
-    </ul>
+        <h3>User list:</h3>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Email</th>
+                    <th>Username</th>
+                    <th>Delete user?</th>
+                </tr>
+            </thead>
+            <tbody>
+            <?php foreach ($user_list as $user): ?>
+                <tr>
+                    <th scope="row"><?= esc($user->id) ?></th>
+                    <td>Email: <?= esc($user->email) ?></td>
+                    <td>Username: <?= esc($user->username) ?></td>
+                    <td>
+                        <form action="/admin/deluser" method="post">
+                            <?= csrf_field() ?>
+                            <input type="hidden" name="userId" value="<?= esc($user->id) ?>">
+                            <input type="submit" name="submit" value="Delete user">
+                        </form>
+                    </td>
+                </tr>
+            <?php endforeach ?>
+            </tbody>
+        </table>
     </section>
 
 

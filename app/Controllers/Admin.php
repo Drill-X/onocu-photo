@@ -6,6 +6,9 @@ use CodeIgniter\Shield\Entities\User;
 
 class Admin extends BaseController
 {
+    /*
+     * This is where administrators can add/delete/modify existing users from a web interface
+     */
     public function index()
     {
         $users = model('UserModel');
@@ -24,10 +27,6 @@ class Admin extends BaseController
     {
         $users = model('UserModel');
 
-        /*$rules = [
-            'username' => config('AuthSession')->usernameValidationRules,
-            'password' => config('Auth')->passwordValidators,
-        ];*/
         $rules = $this->getValidationRules();
 
         if (! $this->validate($rules)) 
@@ -69,15 +68,7 @@ class Admin extends BaseController
     }
 
     /* 
-     * Create a magic link to login as a user without using a password
-     */
-    public function getLoginLink() 
-    {
-
-    }
-
-    /* 
-     * Modify and existing user
+     * Modify an existing user (TODO)
      */
     public function modUser()
     {
@@ -94,10 +85,6 @@ class Admin extends BaseController
         $registrationUsernameRules = array_merge(
             config('AuthSession')->usernameValidationRules,
             ['is_unique[users.username]']
-        );
-        $registrationEmailRules = array_merge(
-            config('AuthSession')->emailValidationRules,
-            ['is_unique[auth_identities.secret]']
         );
 
         return setting('Validation.registration') ?? [
